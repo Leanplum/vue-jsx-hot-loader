@@ -1,54 +1,54 @@
 {
-    "name": "@leanplum/vue-jsx-hot-loader",
-    "description": "Webpack loader for Vue.js components with JSX render functions",
-    "version": "1.4.0",
-    "main": "src/index.js",
-    "files": [
-        "src"
-    ],
-    "scripts": {
-        "test": "eslint --ext .js,.jsx . && jest",
-        "playground": "cd playground && poi --config poi.config.js",
-        "publish": "npm login && npm publish --access=public && git push --set-upstream origin master --follow-tags"
-    },
-    "keywords": [
-        "webpack",
-        "vue",
-        "loader",
-        "jsx",
-        "hot"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Leanplum/vue-jsx-hot-loader.git"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "hash-sum": "^1.0.2",
-        "lodash": "^4.17.10",
-        "serialize-javascript": "^1.5.0"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.0.0-beta.49",
-        "@babel/preset-env": "^7.0.0-beta.49",
-        "@babel/preset-stage-0": "^7.0.0-beta.49",
-        "@skyrpex/eslint-config-base": "^1.0.0-4",
-        "@skyrpex/eslint-config-jest": "^1.0.0-4",
-        "@skyrpex/eslint-config-vue": "^1.0.0-4",
-        "babel-core": "^7.0.0-bridge.0",
-        "babel-plugin-transform-vue-jsx": "^4.0.1",
-        "eslint": "^4.19.1",
-        "jest": "^23.2.0",
-        "np": "^3.0.4",
-        "poi": "^10.2.9",
-        "vue": "^2.5.16",
-        "vue-hot-reload-api": "^2.3.0"
-    },
-    "peerDependencies": {
-        "vue": "^2.0.0",
-        "vue-hot-reload-api": "^2.0.0"
-    },
-    "engines": {
-        "node": ">5.12"
-    }
+  "name": "@leanplum/vue-jsx-hot-loader",
+  "description": "Webpack loader for Vue.js components with JSX render functions",
+  "version": "1.5.0",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "eslint --ext .js,.jsx . && jest",
+    "playground": "cd playground && poi --config poi.config.js",
+    "publish": "npm login && npm publish --access=public && git push --set-upstream origin master --follow-tags"
+  },
+  "keywords": [
+    "webpack",
+    "vue",
+    "loader",
+    "jsx",
+    "hot"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leanplum/vue-jsx-hot-loader.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "hash-sum": "^1.0.2",
+    "lodash": "^4.17.10",
+    "serialize-javascript": "^1.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/preset-stage-0": "^7.0.0-beta.49",
+    "@skyrpex/eslint-config-base": "^1.0.0-4",
+    "@skyrpex/eslint-config-jest": "^1.0.0-4",
+    "@skyrpex/eslint-config-vue": "^1.0.0-4",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-plugin-transform-vue-jsx": "^4.0.1",
+    "eslint": "^4.19.1",
+    "jest": "^23.2.0",
+    "np": "^3.0.4",
+    "poi": "^10.2.9",
+    "vue": "^2.5.16",
+    "vue-hot-reload-api": "^2.3.0"
+  },
+  "peerDependencies": {
+    "vue": "^2.0.0",
+    "vue-hot-reload-api": "^2.0.0"
+  },
+  "engines": {
+    "node": ">5.12"
+  }
 }
