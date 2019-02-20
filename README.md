@@ -1,8 +1,5 @@
 # vue-jsx-hot-loader
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/skyrpex/vue-jsx-hot-loader.svg)](https://greenkeeper.io/)
-[![TravisCI Build status](https://travis-ci.org/skyrpex/vue-jsx-hot-loader.svg?branch=master)](https://travis-ci.org/skyrpex/vue-jsx-hot-loader)
-
 > Works with:
 >
 > ![Vue 2](https://img.shields.io/badge/vue-%5E2.0-green.svg)
@@ -52,6 +49,10 @@ export default {
     },
 };
 ```
+
+## Gotchas
+
+* It only works for the default exported module (which should normally be the component itself).
 
 ## Development
 
