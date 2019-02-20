@@ -1,5 +1,5 @@
 {
-    "name": "vue-jsx-hot-loader",
+    "name": "@leanplum/vue-jsx-hot-loader",
     "description": "Webpack loader for Vue.js components with JSX render functions",
     "version": "1.4.0",
     "main": "src/index.js",
@@ -20,9 +20,8 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/skyrpex/vue-jsx-hot-loader.git"
+        "url": "git+https://github.com/Leanplum/vue-jsx-hot-loader.git"
     },
-    "author": "cristian@pallares.io",
     "license": "MIT",
     "dependencies": {
         "hash-sum": "^1.0.2",
