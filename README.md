@@ -1,4 +1,4 @@
-# vue-jsx-hot-loader
+# @leanplum/vue-jsx-hot-loader
 
 > Works with:
 >
@@ -9,7 +9,7 @@ This loader will enable `Hot Module Replacement` for [Webpack](http://webpack.js
 
 ## Installation
 
-`npm install vue-jsx-hot-loader`
+`npm install @leanplum/vue-jsx-hot-loader`
 
 ## Usage
 
@@ -65,5 +65,5 @@ npm run playground
 ### Release
 
 ```bash
-npx np
+npm run publish
 ```
