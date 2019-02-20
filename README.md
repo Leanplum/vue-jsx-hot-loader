@@ -65,5 +65,6 @@ npm run playground
 ### Release
 
 ```bash
+npm version <patch | minor | major>
 npm run publish
 ```
