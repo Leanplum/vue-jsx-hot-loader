@@ -1,5 +1,10 @@
-const _ = require("lodash");
-const serialize = require("serialize-javascript");
+import indexOf from 'lodash/indexOf';
+import isFunction from 'lodash/isFunction';
+import isObject from 'lodash/isObject';
+import isArray from 'lodash/isArray';
+import size from 'lodash/size';
+import mapValues from 'lodash/mapValues';
+import * as serialize from 'serialize-javascript';
 
 const toString = object => {
     if (typeof object.toString === "function") {
@@ -16,7 +21,7 @@ const toString = object => {
 const transformUnserializableProps = (item, localCache = null) => {
     if (localCache == null) {
         localCache = [];
-    } else if (_.indexOf(localCache, item) !== -1) {
+    } else if (indexOf(localCache, item) !== -1) {
         return null;
     }
 
@@ -32,13 +37,13 @@ const transformUnserializableProps = (item, localCache = null) => {
         return serializedItem;
     }
 
-    if (_.isFunction(item)) {
+    if (isFunction(item)) {
         return item;
     }
 
-    if ((_.isObject(item) || _.isArray(item)) && _.size(item) > 0) {
+    if ((isObject(item) || isArray(item)) && size(item) > 0) {
         localCache.push(item);
-        return _.mapValues(item, value =>
+        return mapValues(item, value =>
             transformUnserializableProps(value, localCache),
         );
     }

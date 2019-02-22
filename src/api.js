@@ -1,8 +1,11 @@
-const _ = require("lodash");
+import once from 'lodash/once';
+import get from 'lodash/get';
+import omit from 'lodash/omit';
+import isEmpty from 'lodash/isEmpty';
 const api = require("vue-hot-reload-api");
 const serialize = require("./serialize");
 
-const install = _.once(Vue => {
+const install = once(Vue => {
     api.install(Vue, false);
 
     // Compatibility can be checked via api.compatible after installation.
@@ -28,7 +31,7 @@ const findComponent = ({ ctx, module }) => {
 };
 
 const isVueComponent = component => {
-    const name = _.get(component, 'super.name');
+    const name = get(component, 'super.name');
     return name === 'Vue' || name === 'VueComponent';
 };
 
@@ -43,7 +46,7 @@ module.exports = ({ Vue, ctx, module, hotId }) => {
     const reloadComponent = (id, component) => {
         // Serialize everything but the render function.
         // We'll use it to decide if we need to reload or rerender.
-        const serialized = serialize(_.omit(component, ["render"]));
+        const serialized = serialize(omit(component, ["render"]));
 
         if (!module.hot.data) {
             // If no data, we need to create the record.
@@ -70,7 +73,7 @@ module.exports = ({ Vue, ctx, module, hotId }) => {
         // Retrieve the exported component. Handle ES and CJS modules as well as
         // untransformed ES modules (env/es2015 preset with modules: false).
         const component = findComponent({ ctx, module });
-        if (component && !_.isEmpty(component)) {
+        if (component && !isEmpty(component)) {
             reloadComponent(hotId, component);
         }
     }
