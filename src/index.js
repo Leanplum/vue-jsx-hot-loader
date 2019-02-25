@@ -1,9 +1,9 @@
-const _ = require("lodash");
+const util = require("lodash");
 const path = require("path");
 const hash = require("hash-sum");
 
 module.exports = function vueJsxHotLoader(output, sourceMap) {
-    if (_.isFunction(this.cacheable)) {
+    if (util.isFunction(this.cacheable)) {
         this.cacheable();
     }
 
@@ -15,7 +15,14 @@ module.exports = function vueJsxHotLoader(output, sourceMap) {
 
     this.callback(
         null,
-        `${output}\n// VUE JSX HOT LOADER //\nif (module.hot) require(${api})({ Vue: require('vue'), ctx: eval('this'), module: module, hotId: ${hotId} });`,
+        `${output}
+        // VUE JSX HOT LOADER //
+        module.hot && require(${api}).default({
+            Vue: require('vue'),
+            ctx: eval('this'),
+            module: module,
+            hotId: ${hotId}
+        });`,
         sourceMap
     );
 };

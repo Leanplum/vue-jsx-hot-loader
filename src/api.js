@@ -1,8 +1,11 @@
-const _ = require("lodash");
-const api = require("vue-hot-reload-api");
-const serialize = require("./serialize");
+import get from "lodash/get";
+import isEmpty from "lodash/isEmpty";
+import omit from "lodash/omit";
+import once from "lodash/once";
+import api from "vue-hot-reload-api";
+import serialize from "./serialize";
 
-const install = _.once(Vue => {
+const install = once(Vue => {
     api.install(Vue, false);
 
     // Compatibility can be checked via api.compatible after installation.
@@ -27,16 +30,16 @@ const findComponent = ({ ctx, module }) => {
     return module.exports.__esModule ? module.exports.default : module.exports;
 };
 
+const isVueFunction = value => {
+    return typeof(value) === 'function' && value.toString().startsWith('function VueComponent');
+};
+
 const isVueComponent = component => {
-    const name = _.get(component, 'super.name');
+    const name = get(component, 'super.name');
     return name === 'Vue' || name === 'VueComponent' || isVueFunction(component);
 };
 
-const isVueFunction = value => {
-  return typeof(value) === 'function' && value.toString().startsWith('function VueComponent');
-};
-
-module.exports = ({ Vue, ctx, module, hotId }) => {
+export default function({ Vue, ctx, module, hotId }) {
     // Make the API aware of the Vue that you are using.
     // Also checks compatibility.
     install(Vue);
@@ -47,7 +50,7 @@ module.exports = ({ Vue, ctx, module, hotId }) => {
     const reloadComponent = (id, component) => {
         // Serialize everything but the render function.
         // We'll use it to decide if we need to reload or rerender.
-        const serialized = serialize(_.omit(component, ["render"]));
+        const serialized = serialize(omit(component, ["render"]));
 
         if (!module.hot.data) {
             // If no data, we need to create the record.
@@ -74,8 +77,8 @@ module.exports = ({ Vue, ctx, module, hotId }) => {
         // Retrieve the exported component. Handle ES and CJS modules as well as
         // untransformed ES modules (env/es2015 preset with modules: false).
         const component = findComponent({ ctx, module });
-        if (component && !_.isEmpty(component)) {
+        if (component && !isEmpty(component)) {
             reloadComponent(hotId, component);
         }
     }
-};
+}
