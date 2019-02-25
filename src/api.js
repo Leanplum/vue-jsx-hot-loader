@@ -29,7 +29,11 @@ const findComponent = ({ ctx, module }) => {
 
 const isVueComponent = component => {
     const name = _.get(component, 'super.name');
-    return name === 'Vue' || name === 'VueComponent';
+    return name === 'Vue' || name === 'VueComponent' || isVueFunction(component);
+};
+
+const isVueFunction = value => {
+  return typeof(value) === 'function' && value.toString().startsWith('function VueComponent');
 };
 
 module.exports = ({ Vue, ctx, module, hotId }) => {
