@@ -68,7 +68,7 @@ export default function({ Vue, ctx, module, hotId }) {
     };
 
 
-    if (module.exports.__esModule && !module.exports.default) {
+    if (module.exports && module.exports.__esModule && !module.exports.default) {
         // Loop over all module exports, reload components
         Object.values(module.exports)
             .filter(isVueComponent)
@@ -77,7 +77,7 @@ export default function({ Vue, ctx, module, hotId }) {
         // Retrieve the exported component. Handle ES and CJS modules as well as
         // untransformed ES modules (env/es2015 preset with modules: false).
         const component = findComponent({ ctx, module });
-        if (component && !isEmpty(component)) {
+        if (component && !isEmpty(component) && isVueComponent(component)) {
             reloadComponent(hotId, component);
         }
     }
